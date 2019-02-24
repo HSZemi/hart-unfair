@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hart unfair — der Titel-Randomisierer</title>
+    <style>
+        body {
+            background-color: rgb(41, 88, 128);
+            color: rgb(206, 206, 206);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        #head,
+        #foot {
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+
+        #content {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%)
+        }
+
+        .visible {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.2s linear;
+        }
+
+        .hidden {
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s 0.2s, opacity 0.2s linear;
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(206, 206, 206);
+        }
+
+        #foot {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="head">HART UNFAIR</div>
+    <div id="content">
+        <h1>
+            <span id="first">Flüchtlinge und Kriminalität</span>
+            <br>
+            <span id="join">–</span>
+            <br>
+            <span id="second">Die Diskussion!</span>
+        </h1>
+    </div>
+    <div id="foot"><a href="https://www.fernsehserien.de/hart-aber-fair/episodenguide" target="_blank">Quelle</a></div>
+</body>
+
+<script type="text/javascript">
+    var data = [["Wenn die Wurst auf einmal wiehert", "was steckt noch in unserem Essen?"],
+    ["Hitler als Witzfigur", "worüber darf Deutschland lachen?"],
+    ["Zehn Jahre Hartz", "Agenda Aufstieg oder Agenda Armut?"],
+    ["Viel Rauch um was eigentlich", "ist die Kirche noch von dieser Welt?"],
+    ["Der Nazi-Prozess", "sitzt Deutschland mit auf der Anklagebank?"],
+    ["Rente erst mit 70", "wer will denn so was?"],
+    ["Tier oder wir", "wie viel Natur erträgt der Mensch?"],
+    ["Den Euro einfach abwählen", "entscheidet die D-Mark-Partei die Wahl?"],
+    ["Hungerlohn bei Luxusmarken", "Die neue B-Klasse der Arbeit?"],
+    ["Echte Liebe gegen Festgeldkonto", "was kann Deutschland vom Fußball lernen?"],
+    ["Die Flut in Deutschland", "Nur Laune oder Rache der Natur?"],
+    ["Mutig oder dreist", "wen treffen die Steuerpläne der Parteien?"],
+    ["Pillen, Vorsorge, Gentest", "ist Gesundheit programmierbar?"],
+    ["Das Aldi-Prinzip", "wird Deutschland zur Billig-Republik?"],
+    ["Euro, Steuern, Syrien-Einsatz", "haben wir wirklich eine Wahl?"],
+    ["Rente, Arbeit, Mindestlohn", "wer sorgt für Gerechtigkeit?"],
+    ["Bitte wählen Sie", "Steuern erhöhen? Sparen? Umverteilen?"],
+    ["Kehraus in Berlin", "Tag der Abrechnung nach der Wahl"],
+    ["Steuern, Schulden, Eurorettung", "werden wir jetzt abkassiert?"],
+    ["Tragödie am Strand", "etwas Besseres als den Tod bieten wir nicht?"],
+    ["Diagnose Alzheimer", "Mildes Wegdämmern oder Absturz ins Dunkel?"],
+    ["Diagnose Alzheimer", "Und wer hilft den Angehörigen?"],
+    ["Teure Öko-Träume", "Wer stoppt den Strompreis-Irrsinn?"],
+    ["Mehr Posten und Kosten", "was bringt die XXL-Koalition sonst noch?"],
+    ["Wulff verstoßen, Hoeneß verschont", "urteilen wir mit zweierlei Maß?"],
+    ["Null Zinsen", "was tun gegen die große Geldschmelze?"],
+    ["Das Große-Koalitions-Zittern", "ob’s den Genossen gefällt?"],
+    ["Die Große Krach-Koalition", "wann werden wir endlich regiert?"],
+    ["Auf Zucker", "wie krank macht uns die süße Droge?"],
+    ["Die Gier-Falle", "Wer schützt unser Geld vor Betrügern?"],
+    ["Was, die auch", "kein Recht auf Steuergeheimnis für Alice Schwarzer?"],
+    ["Vor aller Augen", "der Staat gegen Uli Hoeneß!"],
+    ["Eiszeit im Frühling", "müssen wir Angst vor Russland haben?"],
+    ["Treu aber teuer", "kann sich Deutschland seine Staatsdiener noch leisten?"],
+    ["Heilen, egal wie", "welche Medizin darf es denn sein?"],
+    ["Mafia, Jugend-Banden, Clans", "wer hat die Macht auf unseren Straßen?"],
+    ["Die teure Reform", "macht mehr Geld die Pflege besser?"],
+    ["Hinter Gittern", "wie hart muss Strafe sein?"],
+    ["Im Land von Gier und Neid", "welcher Lohn ist noch gerecht?"],
+    ["Die Euro-Klatsche", "EU-Gegner vor dem Triumph?"],
+    ["Alte jubeln, Junge ächzen", "ist das die neue Rentenformel?"],
+    ["Europas Wutbürger", "Abschottung statt Toleranz?"],
+    ["Profit vor Patient", "wie krank sind unsere Krankenhäuser?"],
+    ["Flagge zeigen und Waffen liefern", "Deutschlands neue Rolle?"],
+    ["Essen aus der Truhe", "was ist der Preis für unsere Bequemlichkeit?"],
+    ["Wladimir Putin", "der gefährlichste Mann Europas?"],
+    ["Der Kick der kleinen Preise", "wie billig darf Kleidung sein?"],
+    ["Auf Streife für Allah", "vor welchem Islam müssen wir Angst haben?"],
+    ["Therapie Tod", "dürfen Ärzte beim Sterben helfen?"],
+    ["Lokführer und Piloten", "sind wir Geiseln der Mini-Gewerkschaften?"],
+    ["Der Ausbruch", "bedroht Ebola uns alle?"],
+    ["Minizinsen und Wackeleuro", "macht uns die Krise arm?"],
+    ["Vereint aber fremd", "zwei Deutschlands unter einem Dach?"],
+    ["Mit der Kuh per Du", "wie korrekt muss unser Essen sein?"],
+    ["Altenrepublik Deutschland", "werden die Jungen ausgeplündert?"],
+    ["Deutschland und der Islam", "wie passt das zusammen?"],
+    ["Russisch Roulette auf Rezept", "wie gefährlich ist die Medikamente-Flut?"],
+    ["Süßer die Kunden nie klicken", "zu viel Macht für Amazon und Co.?"],
+    ["Von Schurken und Helden", "wie hat 2014 die Welt verändert?"],
+    ["Der Hass und die Folgen", "spaltet der Terror das Abendland?"],
+    ["Terrorangst in Deutschland", "wie nah ist die Gefahr?"],
+    ["Trotzwahl in Griechenland", "wer soll das bezahlen?"],
+    ["Alzheimer als Komödie", "hilft Lachen gegen die Angst?"],
+    ["Griechenlands Schuldenpoker", "zieht uns der Süden über den Tisch?"],
+    ["Flüchtlinge in Deutschland", "wie willkommen sind sie wirklich?"],
+    ["Nieder mit den Ampelmännchen", "Deutschland im Gleichheitswahn?"],
+    ["Unsere wüsten Freunde", "kaufen die Scheichs nach der WM auch unsere Moral?"],
+    ["Pleite, beleidigt und dreist", "hat Griechenland dieses Image verdient?"],
+    ["Von Impfgegnern bis Geistheilern", "alles nur Aberglaube?"],
+    ["Notfall Psyche", "Gefahr auch für die Mitmenschen?"],
+    ["Reichen-Rabatt und diskrete Deals", "wie gerecht ist die Justiz?"],
+    ["Ängstliche Bürger, hilflose Polizei", "Was schützt gegen Einbruch und Trickbetrug?"],
+    ["Problemfall Schule", "zu viel Goethe, zu wenig Google?"],
+    ["Ende der Schonfrist", "Fliegt Griechenland jetzt aus dem Euro?"],
+    ["Kitastreik als Härtetest", "Passen Job und Familie wirklich zusammen?"],
+    ["Der verkaufte Fußball", "macht die FIFA unseren Sport kaputt?"],
+    ["Auf dem Gipfel", "was macht Merkel mit ihrer Macht?"],
+    ["Fleischesser am Pranger", "kommt jetzt das Ende der Wurst?"],
+    ["Der Griechen-Gipfel", "Rausschmiss oder weiter so?"],
+    ["Griechen-Poker im Bürgercheck", "ist das unser Europa?"],
+    ["800.000 Flüchtlinge", "schafft Deutschland das?"],
+    ["Der Gender-Streit", "Was darf zu Mann und Frau gesagt werden?"],
+    ["Schlagbaum runter, Zäune hoch", "Panikstimmung in Europa?"],
+    ["Flüchtlingskrise im Bürgercheck", "Geht das gut mit Jobs, Wohnen, Integration?"],
+    ["Merkel bejubeln, an Mohammed glauben", "Wie viel Islam gehört zu Deutschland?"],
+    ["Abschieben, abschrecken, abschotten", "zieht Merkel jetzt die Notbremse?"],
+    ["Sterbehilfe", "von den Bürgern gewollt, vom Staat verboten?"],
+    ["Flüchtlingskrise als Dauerzustand", "jetzt reden die Helfer"],
+    ["Terrorkrieg in Paris", "was macht die Angst mit unserem Europa?"],
+    ["Terror gegen die Freiheit", "wie verteidigen wir unsere Werte?"],
+    ["Deutschland und der Terror", "ist Sicherheit jetzt wichtiger als Freiheit?"],
+    ["Vom Wutbürger zum Brandstifter", "woher kommt der rechte Hass?"],
+    ["Das elende Leben der Steaks", "was ist uns gutes Fleisch noch wert?"],
+    ["Flucht, Terror, Skandale", "wie hat 2015 unser Land verändert?"],
+    ["Die Schande von Köln", "was sind die Konsequenzen?"],
+    ["Frisierte Polizeiberichte, bevormundete Bürger", "darf man bei uns noch alles sagen?"],
+    ["Angezählt", "wie viel Zeit bleibt Merkel noch?"],
+    ["Bürger in Angst, Polizei unter Druck", "ist unser Staat zu schwach?"],
+    ["Wohin mit den Flüchtlingen", "lässt Europa uns im Stich?"],
+    ["Merkels Zwischenbilanz", "Kanzlerin der leeren Hände?"],
+    ["Jung, männlich, ungebildet?", "Der Integrations-Check bei „hart aber fair“!"],
+    ["Flüchtlingsgipfel und drei Wahlen", "Abrechnung mit der Kanzlerin?"],
+    ["Die Wut-Wahl", "Verliert Deutschland die politische Mitte?"],
+    ["Zocker belohnen, Sparer bestrafen", "Zinspolitik gegen die Bürger?"],
+    ["Angriff auf das Herz Europas", "Schutzlos gegen den Terror?"],
+    ["Wegschauen, kleinreden", "wie gefährlich ist die rechte Gewalt?"],
+    ["Terror im Namen Gottes", "hat der Islam ein Gewaltproblem?"],
+    ["Gekommen um zu bleiben", "wie werden aus Einwanderern Deutsche?"],
+    ["Heute jung, morgen arm", "schuften für eine Mini-Rente?"],
+    ["Bewährung für Täter, lebenslang für Opfer", "urteilen unsere Richter zu lasch?"],
+    ["Erbenrepublik Deutschland", "wer hat, dem wird gegeben?"],
+    ["Immer online", "machen Smartphones dumm und krank?"],
+    ["Heilung um jeden Preis", "wie teuer darf Medizin sein?"],
+    ["Die Methode Trump", "erobern Krawallmacher und Populisten die Macht?"],
+    ["Amok in Zeiten des Terrors", "wie verändert die Angst das Land?"],
+    ["Halbmond über Deutschland", "wie viel Erdogan verträgt unser Land?"],
+    ["Der Feind in meinem Essen", "wie ungesund sind Zucker und Co.?"],
+    ["Fluchtpunkt Deutschland", "hat Merkel ihre Bürger überfordert?"],
+    ["Offene Gesellschaft, offenes Gesicht", "Kulturkampf um die Burka?"],
+    ["Zäune statt Hilfe", "sind wir selbst schuld an der nächsten Flüchtlingswelle?"],
+    ["Diagnose Gier", "werden wir beim Arzt abgezockt?"],
+    ["Einheit? Sie pfeifen drauf!", "Was ist da los, Brüder und Schwestern?"],
+    ["Terror", "Abstimmung, Urteil und Diskussion"],
+    ["Minus-Zinsen, Extra-Gebühren", "Retten sich die Banken auf Kosten der Kunden?"],
+    ["Volksabstimmung für alle", "sind Bürger die besseren Politiker?"],
+    ["Kampf um die Rente", "Wähl mich, ich geb am meisten!"],
+    ["Trump und wir", "was nun?"],
+    ["Hassen, Pöbeln, Gaffen", "wie verroht ist unsere Gesellschaft?"],
+    ["Der Sprung ins Dunkle", "Was bringt die Ära Trump?"],
+    ["Die ewige Kanzlerin", "ist Merkel die Lösung oder das Problem?"],
+    ["Das Schockjahr 2016", "nur Schurken, kaum Helden?"],
+    ["Neues Deutschland", "bringt Härte gegen Zuwanderer mehr Sicherheit?"],
+    ["Sicherheit, Steuern, Rente", "der Wahlcheck 2017!"],
+    ["Mensch raus, Wolf rein", "wie viel Naturschutz verträgt unser Land?"],
+    ["Trump macht ernst", "wie warm müssen wir uns anziehen?"],
+    ["Trump und wir", "Experten beantworten Zuschauerfragen!"],
+    ["Der Alternative", "wie gefährlich wird Schulz für Merkel?"],
+    ["Oben verantwortungslos, unten chancenlos", "ist Schlecker heute überall?"],
+    ["Hier Freiheit leben, dort Erdogan wählen", "wie passt das zusammen?"],
+    ["Alles erreicht, dann noch ein Baby", "Kinderwunsch ohne Altersgrenze?"],
+    ["Feiern gegen die Krise?", "Europa im Bürgercheck!"],
+    ["Gefahr Krankenhaus", "Wenig Personal, aber reichlich Keime?"],
+    ["Giftgas gegen syrische Kinder", "werden wir schuldig durch Wegschauen?"],
+    ["Vorentscheidung im Westen", "Was liefern die Parteien bei Integration, Sicherheit, Gerechtigkeit?"],
+    ["K.o. nach drei Runden", "Keine Chance mehr für Schulz?"],
+    ["Außer Kontrolle", "wie gefährlich ist Trump für die Welt?"],
+    ["Der Fußball und das Geld", "macht der Kommerz den Sport kaputt?"],
+    ["Waschen, pflegen, trösten", "wer kümmert sich um uns, wenn wir alt sind?"],
+    ["Wenn Terror Alltag wird", "Ist Mutigsein jetzt Bürgerpflicht?"],
+    ["Trumps neue Welt", "Wild-West statt freier Westen?"],
+    ["Faszination Adel", "wie wichtig sind Geld und Herkunft für den Erfolg?"],
+    ["Der Bürgercheck zur Wahl", "Wie umgehen mit Trump, Erdogan und Putin?"],
+    ["Nach dem Duell, vor der Wahl", "kommt jetzt die ewige Kanzlerin?"],
+    ["Der Bürgercheck zur Wahl", "Was soll sich ändern bei Steuern, Rente, Wohnen?"],
+    ["Der Bürgercheck zur Wahl", "Was muss sich ändern bei Sicherheit und Zuwanderung?"],
+    ["Die gerupfte Kanzlerin", "wie regieren nach dem Debakel der Volksparteien?"],
+    ["Notruf aus dem Pflegealltag", "Was muss die nächste Regierung tun?"],
+    ["Starke Kandidaten, starke Wahlergebnisse", "Warnruf für Angela Merkel?"],
+    ["Wenn Wohnen unbezahlbar wird", "was muss die nächste Regierung tun?"],
+    ["Steueroase Europa", "wie uns Konzerne und Super-Reiche abzocken!"],
+    ["Stadtverstopfer, Luftverpester", "muss das Auto an den Pranger?"],
+    ["Die Gescheiterten", "Wer kann uns jetzt regieren?"],
+    ["Zwangsheirat mit Angela", "ist die große Koalition so schlimm?"],
+    ["Der stille Tod der Bienen", "wer vergiftet unsere Natur?"],
+    ["Feste Jobs gestrichen, Löhne gedrückt", "Ist das die neue Arbeitswelt?"],
+    ["Flop-Jahr 2017, erst Wahl, dann Qual", "Womit haben wir das verdient?"],
+    ["Wampe oder Waschbrettbauch", "gibt es gutes Leben ohne schlechtes Gewissen?"],
+    ["Erst verhandeln, dann zerreden", "Wie soll daraus je eine Regierung werden?"],
+    ["Crash der Lebensversicherungen", "Panikmache oder echte Gefahr?"],
+    ["Macht, Mann, Missbrauch", "was lehrt uns der Fall Wedel?"],
+    ["Überlastet, überfordert, zu lasch", "was läuft schief bei den Gerichten?"],
+    ["Merkels neue Mannschaft", "sieht so Erneuerung aus?"],
+    ["Fremde gegen Deutsche, Arme gegen Arme", "Was zeigt der Fall der Essener Tafel?"],
+    ["Ein Ozean voll Plastik", "ertrinken die Meere in unserem Müll?"],
+    ["Warten zweiter Klasse", "was bessert sich für Kassenpatienten, Herr Spahn?"],
+    ["Hartz gleich arm", "geht diese Rechnung auf?"],
+    ["Islam ausgrenzen, Muslime integrieren", "kann das funktionieren?"],
+    ["Mit dem Finger am Abzug", "Wie zügellos ist Donald Trump?"],
+    ["Unter grauen Haaren der Muff von 50 Jahren", "Streit ums Erbe der 68er"],
+    ["Beruf Niedriglöhner", "Wirtschaftsboom auf Kosten der Ärmsten?"],
+    ["Der Club der Reichen", "wieviel Ungleichheit verträgt das Land?"],
+    ["Wie kann das noch sein", "Judenhass in Deutschland?"],
+    ["Mieten zu hoch, Bauen zu teuer", "wenn Wohnen arm macht!"],
+    ["Flüchtlinge und Kriminalität", "Die Diskussion!"]];
+
+    setInterval(function () { update(); }, 3333);
+
+    function update() {
+        document.getElementById("content").classList.add("hidden");
+        document.getElementById("content").classList.remove("visible");
+        setTimeout(() => {
+            document.getElementById("first").innerHTML = rc(data)[0];
+            document.getElementById("second").innerHTML = rc(data)[1];
+            document.getElementById("content").classList.add("visible");
+            document.getElementById("content").classList.remove("hidden");
+        }, 200);
+    }
+
+    function rc(arr) {
+        var index = Math.floor(Math.random() * arr.length);
+        return arr[index];
+    }
+</script>
+
+</html>
